@@ -33,6 +33,3 @@ def get_features(audio, sr):
         "ZCR" : ZCR
     })
 
-#audio is the audio and sr is the sampling rate
-audio,sr= librosa.load("C:/Users/callu/OneDrive/Documents/Sounds/Background.mp3", sr=10000)
-print(get_features(audio, sr))
