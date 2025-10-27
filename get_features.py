@@ -46,5 +46,4 @@ def get_features(y,sr):
         'pitch_mean': np.mean(librosa.piptrack(y=y, sr=sr)[0])
     }
 
-    print(features)
     return dict(features)
