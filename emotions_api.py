@@ -3,10 +3,14 @@ import librosa
 import numpy as np
 import tensorflow as tf
 from get_features import get_features as get
+import GUI
+import threading
+import joblib
 
 app = Flask(__name__)
 
 model = tf.keras.models.load_model("nn_emotion_model.keras")
+#model = joblib.load('XGBC_emotion_model.joblib')
 
 emotion_map = {
     0: 'Neutral',
@@ -81,5 +85,10 @@ def predict():
         'probabilities': prediction.tolist()
     })
 
+def run_api():
+    app.run(debug=False)
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    threading.Thread(target=run_api, daemon=True).start()
+
+    GUI.start()
